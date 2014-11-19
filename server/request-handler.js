@@ -30,18 +30,20 @@ exports.collectData = function(request, callback) {
   });
 };
 
+
+
 exports.requestHandler = function(request, response) {
-  console.log("Serving request type " + request.method + " for url " + request.url);
   var method = request.method;
-  console.log(method)
+  var resource = request.url;
+
+  if (resource === '/arglebargle' ) {
+    exports.sendResponse(response, "Resource not found", 404)
+  }
 
   if (method === "POST") {
     exports.collectData(request, function(message) {
       message.objectId = ++objectId;
       messages.push(message);
-      console.log(messages);
-      console.log('here i am');
-
       exports.sendResponse(response, {objectId: message.objectId}, 201);
     });
   }
