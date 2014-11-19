@@ -14,15 +14,10 @@ exports.sendResponse = function(response, data, statusCode) {
 
   response.writeHead(statusCode, headers);
   response.end(JSON.stringify(data));
+};
 
-}
-
-var objectId = 1;
-var messages = [
-  {'text':'hello world',
-   'username':'pat',
-   'objectID' : objectId}
-];
+var objectId = 0;
+var messages = [];
 
 exports.collectData = function(request, callback) {
   var data = "";
@@ -42,12 +37,12 @@ exports.requestHandler = function(request, response) {
 
   if (method === "POST") {
     exports.collectData(request, function(message) {
-      message.objectID = ++objectId;
+      message.objectId = ++objectId;
       messages.push(message);
-      console.log(message);
+      console.log(messages);
       console.log('here i am');
 
-      exports.sendResponse(response, {objectId: message.objectId});
+      exports.sendResponse(response, {objectId: message.objectId}, 201);
     });
   }
   else if (method === "GET") {
