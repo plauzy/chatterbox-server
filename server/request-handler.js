@@ -30,9 +30,10 @@ exports.collectData = function(request, callback) {
   });
 };
 
-
-
 exports.requestHandler = function(request, response) {
+  console.log("Serving request type " + request.method + " for url " + request.url);
+
+
   var method = request.method;
   var resource = request.url;
 

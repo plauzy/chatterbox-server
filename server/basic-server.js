@@ -27,7 +27,7 @@ routes = {
 var server = http.createServer(requestLib.requestHandler);
 
 // var server = http.createServer(function(request, response) {
-//   console.log("Serving request type " + request.method + " for url " + request.url);
+  // console.log("Serving request type " + request.method + " for url " + request.url);
 //   if (request.url === '/classes/chatterbox') {
 //     requestLib.
 //   } else {
